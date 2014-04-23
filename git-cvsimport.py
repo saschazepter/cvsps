@@ -223,7 +223,7 @@ class CvsFastExport:
                                        stdin=subprocess.PIPE,
                                        stdout=fast_import.stdin)
         fast_import.stdin.close()
-        for root, dirs, files in os.walk('.', onerror=lambda e: raise e):
+        for root, dirs, files in os.walk('.', onerror=Fatal):
             for name in files:
                 if name.endswith(',v'):
                     fast_export.stdin.write('%s\n' % os.path.join(root, name))
