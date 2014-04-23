@@ -45,6 +45,7 @@ class Cvsps:
     "Method class for cvsps back end."
 
     def __init__(self):
+        self.cvsps = 'cvsps'
         self.opts = []
         self.revmap = None
         self.min_version = (3, 0)
