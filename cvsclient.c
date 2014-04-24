@@ -252,7 +252,10 @@ static CvsServerCtx * open_ctx_pserver(CvsServerCtx * ctx, const char * p_root)
     send_string(ctx, "END AUTH REQUEST\n");
 
     if (!read_response(ctx, "I LOVE YOU"))
-	goto out_close_err;
+	{
+	    debug(DEBUG_APPERROR, "login failed, check your username and password");
+	    goto out_close_err;
+	}
 
     strcpy_a(ctx->root, p, PATH_MAX);
     ctx->is_pserver = true;

@@ -191,6 +191,13 @@ int main(int argc, char *argv[])
     strip_path_len = init_paths(root_path, repository_path, strip_path);
 
     cvsclient_ctx = open_cvs_server(root_path, compress);
+
+    if (!cvsclient_ctx)
+    {
+	debug(DEBUG_APPERROR, "can't connect to CVS server");
+	exit(1);
+    }
+
     cvsfp = cvs_rlog_open(cvsclient_ctx, repository_path);
 
     if (!cvsfp)
