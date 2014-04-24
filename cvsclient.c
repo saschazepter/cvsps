@@ -210,7 +210,7 @@ static CvsServerCtx * open_ctx_pserver(CvsServerCtx * ctx, const char * p_root)
 	goto out_free_err;
     }
 
-    if (*p == ':') /* port number specified. Ends at tok. */
+    if (*p == ':' && *(p+1) != '/') /* port number specified. Ends at tok. */
     {
 	p++;
 	memcpy(port, p, tok - p);
